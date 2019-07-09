@@ -41,17 +41,17 @@ bool has_mobile(const vector<int> &arr, const vector<bool> &dir)
  */
 int largest_mobile(const vector<int> &arr, const vector<bool> &dir)
 {
-    int max_index = 0;
+    int max_index = -1;
     for(int i = 0; i < arr.size(); i++)
     {
         //when an integer has left to right direction
         if(dir[i] == l2r && i + 1 < dir.size())
-            if(arr[i] > arr[i + 1] && arr[i] > arr[max_index])
+            if(arr[i] > arr[i + 1] && (max_index == -1 || arr[i] > arr[max_index]))
                 max_index = i;
         
         //when an integer has right to left direction
         if(dir[i] == r2l && i - 1 >= 0)
-            if(arr[i] > arr[i - 1] && arr[i] > arr[max_index])
+            if(arr[i] > arr[i - 1] && (max_index == -1 || arr[i] > arr[max_index]))
                 max_index = i;
     }
 
@@ -64,7 +64,7 @@ int largest_mobile(const vector<int> &arr, const vector<bool> &dir)
  * @output dir the direction array
  * @param largest_index largest element index 
  */
-void swap_largest(vector<int> &arr, vector<bool> &dir, const int largest_index)
+void swap_largest(vector<int> &arr, vector<bool> &dir, int &largest_index)
 {
     int k_, k = largest_index;
     if(dir[k] == r2l)
@@ -74,6 +74,8 @@ void swap_largest(vector<int> &arr, vector<bool> &dir, const int largest_index)
     
     swap(arr[k], arr[k_]);
     swap(dir[k], dir[k_]);
+
+    largest_index = k_;
 }
 
 /**
@@ -111,6 +113,9 @@ int factorial(int n)
  */
 void johnson_trotter(int n, vector<vector<int>> &permutations)
 {
+    if(n < 1)
+        throw "n should be larger than 0";
+
     vector<int> perm(n);
     vector<bool> dir(n);
 
@@ -121,11 +126,19 @@ void johnson_trotter(int n, vector<vector<int>> &permutations)
     for(int i = 0; i < n; i++)
         dir[i] = r2l;
     
+    permutations.push_back(perm);
+
     //while the last permutation has a mobile element do
     while(has_mobile(perm, dir))
     {
         //find its largest mobile element k
         int largest_index = largest_mobile(perm, dir);
+
+        if(largest_index < 0)
+        {
+            cout << "wrong largest index" << endl;
+            return;
+        }
 
         //swap k with the adjacent element k’s arrow points to
         swap_largest(perm, dir, largest_index);
@@ -140,7 +153,15 @@ void johnson_trotter(int n, vector<vector<int>> &permutations)
 
 int main()
 {
-
     vector<vector<int>> res;
-    johnson_trotter(3, res);
+    johnson_trotter(6, res);
+
+    //print result
+    cout << res.size() << endl;
+    for(auto x : res)
+    {
+        for(auto y : x)
+            cout << y << " ";
+        cout << endl;
+    }
 }
