@@ -7,6 +7,6 @@ This is the practice of book <Introduction to the Design and Analysis of Algorit
 
 # Content
 
-## Chapter3
-### [Johnson Trotter Algorithm](Chapter3/JohnsonTrotter.cpp)
+## Chapter4 Decrease-and-Conquer
+### [Johnson Trotter Algorithm](Chapter4/JohnsonTrotter.cpp)
 
