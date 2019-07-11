@@ -7,28 +7,27 @@ using std::vector;
 using std::cout;
 using std::endl;
 using std::sort;
+using std::swap;
+
 
 /**
- * @brief Sorts a given array by insertion sort
- * @param arr an array A[0..n − 1] of n orderable elements
- * @output arr array A[0..n-1] sorted in nondecreasing order
+ * @brief sort given array by selection sort
+ * @params arr An array A[0..n − 1] of orderable elements
+ * @output arr Array A[0..n − 1] sorted in nondecreasing order
  */
-void insertion_sort(vector<int> &arr)
+void selection_sort(vector<int> &arr)
 {
-    if(arr.size() <= 1)
+    if(arr.size()  <= 1)
         return;
-    
-    for(int i = 1; i < arr.size(); i++)
+
+    for(int i = 0; i < arr.size() - 1; i++)
     {
-        int v = arr[i];
-        int j = i - 1;
-        while(j >= 0 && arr[j] > v)
-        {
-            //move jth element one position right 
-            arr[j + 1] = arr[j];
-            j--;
-        }
-        arr[j + 1] = v;
+        int min_index = i;
+        for(int j = i + 1; j < arr.size(); j++)
+            if(arr[j] < arr[min_index])
+                min_index = j;
+
+        swap(arr[min_index], arr[i]);
     }
 }
 
@@ -40,7 +39,7 @@ int main()
         test.push_back(randint(-100000, 100000));
     vector<int> test1 = test;
     
-    insertion_sort(test);
+    selection_sort(test);
     sort(test1.begin(), test1.end()); //test for correctness
 
     if(test1 == test)
@@ -48,6 +47,3 @@ int main()
     else
         cout << "wrong result" << endl;
 }
-
-
-
