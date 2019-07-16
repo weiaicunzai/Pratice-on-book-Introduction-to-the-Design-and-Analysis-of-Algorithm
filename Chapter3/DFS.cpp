@@ -79,7 +79,7 @@ void dfs(graph &g, vector<bool> &visited, int v)
 
 int main()
 {
-    graph g(7); //DAG
+    graph g(7); //DAG, also a disconnected graph
     g.add_edge(0, 2);
     g.add_edge(0, 5);
     g.add_edge(1, 2);
