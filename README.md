@@ -13,6 +13,7 @@ This is the practice of book **Introduction to the Design and Analysis of Algori
 ### [Sequential Search algorithm](Chapter3/SequentialSearch.cpp)
 ### [Brute Force String Match algorithm](Chapter3/BruteForceStringMatch.cpp)
 ### [Brute Force Closest Pair algorithm](Chapter3/BruteForceClosestPair.cpp)
+### [Depth-first Search algorithm](Chapter3/DFS.cpp)
 ## Chapter4 Decrease-and-Conquer
 ### [Insertion Sort Algorithm](Chapter4/InsertionSort.cpp)
 ### [Johnson Trotter Algorithm](Chapter4/JohnsonTrotter.cpp)

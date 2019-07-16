@@ -37,9 +37,9 @@ void graph::add_edge(int src, int dest)
     if(src == dest)
         throw "It's a Directed Acyclic Graph";
     if(src >= this->vertices_num)
-        throw "vertice " + to_string(src) + " does not exist!";
+        throw "vertex" + to_string(src) + " does not exist!";
     if(dest >= this->vertices_num)
-        throw "vertice " + to_string(dest) + " does not exist!";
+        throw "vertex" + to_string(dest) + " does not exist!";
 
     adj_list->at(src).push_back(dest);
 }
@@ -59,7 +59,7 @@ const vector<list<int>>*  graph::get_adj_list()
  * @brief Implements a depth-first search traversal of a given graph 
  * @param g a gragh in adjacent list format
  * @param visited check if a node is visited
- * @param the vertice we want to visit
+ * @param the vertex we want to visit
  */
 void dfs(graph &g, vector<bool> &visited, int v)
 {
@@ -94,5 +94,6 @@ int main()
     for(int i = 0; i < g.get_vertices_num(); i++)
         visited[i] = false;
     
-    dfs(g, visited, 0);
+    for(int i = 0; i < 7; i++)
+        dfs(g, visited, i); //since g is a disconnected graph, we need to call dfs for every vertex
 }
