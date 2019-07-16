@@ -32,8 +32,8 @@ double cloest_pair_bf(vector<point> &points)
 
 int main()
 {
-    int size = randint(2, 1000);
     //vector<point> points = {point(0, 0), point(1, 1), point(0, 1), point(2, 2), point(0.3, 0.3)};
+    int size = randint(2, 1000);
     vector<point> points;
     for(int i = 0; i < size; i++)
         points.push_back(point(randouble(-10, 10), randouble(-10, 10)));
