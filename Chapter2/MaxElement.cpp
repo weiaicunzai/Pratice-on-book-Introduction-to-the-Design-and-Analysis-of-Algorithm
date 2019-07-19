@@ -6,43 +6,37 @@
 using std::vector;
 using std::cout;
 using std::endl;
-using std::find;
+
 
 /**
- * @brief searches for a given value in a given array by sequential search
- * @params arr An array of n elements 
- * @params k search key
- * @output The index of the first element in A that matches K 
- *         or −1 if there are no matching elements
- *          
+ * @brief Determines the value of the largest element in a given array
+ * @params arr the given arr of integers
+ * @params output the value of the largest element in arr
  */
-int sequential_search(vector<int> arr, int k)
+int max_element(const vector<int> &arr)
 {
-    int i = 0;
-    while(i < arr.size() && arr[i] != k)
-        i++;
+    if(arr.size() < 1)
+        throw "array size should be larger than one";
     
-    if(i < arr.size())
-        return i;
-
-    return -1;
+    int max_value = arr[0];
+    for(int i = 0; i < arr.size(); i++)
+        if(arr[i] > max_value)
+            max_value = arr[i];
+    
+    return max_value;
 }
 
 int main()
 {
-    int array_size = randint(0, 1000);
-    vector<int> test;
-    for(int i = 0; i < array_size; i++)
-        test.push_back(randint(-100, 100));
-    int k = randint(-100, 100);
-
-    int index = sequential_search(test, k);
-    auto it = find(test.begin(), test.end(), k); //compare our result with stl result
-
-    if(it == test.end() && index == -1)
-        cout << "correct result" << endl;
-    else if(index == it - test.begin())
-        cout << "correct result" << endl;
-    else
+    int arr_size = randint(1, 1000);
+    vector<int> arr;
+    for(int i = 0; i < arr_size; i++)
+        arr.push_back(randint(-1000, 1000));
+    
+    if(max_element(arr) != *std::max_element(arr.begin(), arr.end()))
         cout << "wrong result" << endl;
+    else
+        cout << "correct result" << endl;
 }
+
+
