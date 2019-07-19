@@ -7,13 +7,16 @@ This is the practice of book **Introduction to the Design and Analysis of Algori
 
 # Content
 
+## Chapter2 Fundamentals of the Analysis of Algorithm Efficiency
+### [Sequential Search algorithm](Chapter2/SequentialSearch.cpp)
 ## Chapter3 Brute Force and Exhaustive Search
 ### [Selection Sort algorithm](Chapter3/SelectionSort.cpp)
 ### [Bubble Sort algorithm](Chapter3/BubbleSort.cpp)
-### [Sequential Search algorithm](Chapter3/SequentialSearch.cpp)
+### [Sequential Search 2 algorithm](Chapter3/SequentialSearch2.cpp)
 ### [Brute Force String Match algorithm](Chapter3/BruteForceStringMatch.cpp)
 ### [Brute Force Closest Pair algorithm](Chapter3/BruteForceClosestPair.cpp)
-### [Depth-first Search algorithm](Chapter3/DFS.cpp)
+### [Depth-first Search algorithm](Chapter3/DepthFirstSearch.cpp)
+### [Breadth-first Search algorithm](Chapter3/BreadthFirstSearch.cpp)
 ## Chapter4 Decrease-and-Conquer
 ### [Insertion Sort Algorithm](Chapter4/InsertionSort.cpp)
 ### [Johnson Trotter Algorithm](Chapter4/JohnsonTrotter.cpp)

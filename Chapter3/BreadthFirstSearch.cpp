@@ -1,9 +1,10 @@
 #include <list>
 #include <vector>
+#include <queue>
 #include <iostream>
-#include "../utils/utils.hpp"
 
 using std::vector;
+using std::queue;
 using std::list;
 using std::cout;
 using std::endl;
@@ -54,26 +55,43 @@ const vector<list<int>>*  graph::get_adj_list()
     return this->adj_list;
 }
 
-
 /**
- * @brief Implements a depth-first search traversal of a given graph 
+ * @brief Implements a breadth-first search traversal of a given graph 
  * @param g a gragh in adjacent list format
  * @param visited check if a node is visited
  * @param the vertex we want to visit
  */
-void dfs(graph &g, vector<bool> &visited, int v)
+void bfs(graph &g, vector<bool> &visited, int v)
 {
     if(visited[v])
         return;
+    
+    if(!g.get_vertices_num())
+        return;
 
-    cout << v << endl;
+    queue<int> q;
+    q.push(v);
     visited[v] = true;
+    cout << q.front() << endl;
 
-    auto adj_list = g.get_adj_list();
-    list<int> temp = adj_list->at(v);
-    for(auto it = temp.begin(); it != temp.end(); it++)
-        if(!visited[*it])
-            dfs(g, visited, *it);
+    while(!q.empty())
+    {
+        auto adj_list = g.get_adj_list();
+        auto cur_vertex = adj_list->at(q.front());
+
+        //iterate through the vertices that are one step away from the current vertex
+        for(auto it = cur_vertex.begin(); it != cur_vertex.end(); it++)
+        {
+            if(!visited[*it])
+            {
+                visited[*it] = true;
+                q.push(*it);
+                cout << *it << endl;
+            }
+        }
+
+        q.pop();
+    }
 }
 
 
@@ -95,5 +113,6 @@ int main()
         visited[i] = false;
     
     for(int i = 0; i < 7; i++)
-        dfs(g, visited, i); //since g is a disconnected graph, we need to call dfs for every vertex
+        bfs(g, visited, i); //since g is a disconnected graph, we need to call dfs for every vertex
+
 }
