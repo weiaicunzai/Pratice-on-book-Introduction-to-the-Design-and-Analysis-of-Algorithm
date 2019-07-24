@@ -10,6 +10,8 @@ This is the practice of book **Introduction to the Design and Analysis of Algori
 ### [Sequential Search algorithm](Chapter2/SequentialSearch.cpp)
 ### [Max Element algorithm](Chapter2/MaxElement.cpp)
 ### [Unique Elements algorithm](Chapter2/UniqueElements.cpp)
+### [Matrix Multiplication algorithm](Chapter2/MatrixMultiplication.cpp)
+### [Binary algorithm](Chapter2/Binary.cpp)
 ## Chapter3 Brute Force and Exhaustive Search
 ### [Selection Sort algorithm](Chapter3/SelectionSort.cpp)
 ### [Bubble Sort algorithm](Chapter3/BubbleSort.cpp)

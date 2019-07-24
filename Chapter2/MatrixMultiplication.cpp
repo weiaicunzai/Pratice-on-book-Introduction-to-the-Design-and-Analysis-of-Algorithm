@@ -20,6 +20,12 @@ void init_mat(matrix &mat, int n)
     }
 }
 
+/**
+ * @brief Multiplies two square matrices of order n by the definition-based algorithm
+ * @param mat1 a nxn matrix
+ * @param mat2 a nxn matrix
+ * @output a matrix pointer points to a matrix contains mat multiplication result
+ */
 const matrix* mat_mul(const matrix &mat1, const matrix &mat2)
 {
     assert(mat1.size() == mat1[0].size() && "mat should be a nxn matrix");
