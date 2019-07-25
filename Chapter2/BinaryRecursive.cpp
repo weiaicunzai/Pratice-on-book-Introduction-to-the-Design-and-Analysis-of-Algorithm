@@ -5,21 +5,17 @@ using std::endl;
 using std::cout;
 
 /**
- * @brief finds the number of binary digits in the binary representation of a positive
- * decimal integer 
+ * @brief finds the number of binary digits in the binary representation 
+ * of a positive decimal integer (recursive version)
  * @input a positve decimal integer
  * @output the number of binary digits in n's binary representation
  */
 int binary(int n)
 {
-    int count = 0;
-    while(n > 1)
-    {
-        count++;
-        n = n / 2;
-    }
+    if(n < 1)
+        return 0;
     
-    return count;
+    return binary( n / 2) + 1;
 }
 
 int main()
