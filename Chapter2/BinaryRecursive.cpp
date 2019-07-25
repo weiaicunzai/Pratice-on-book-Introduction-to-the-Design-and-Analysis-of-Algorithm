@@ -12,7 +12,7 @@ using std::cout;
  */
 int binary(int n)
 {
-    if(n < 1)
+    if(n == 1)
         return 0;
     
     return binary( n / 2) + 1;
