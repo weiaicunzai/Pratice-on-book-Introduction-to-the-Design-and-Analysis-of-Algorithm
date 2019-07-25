@@ -12,6 +12,7 @@ This is the practice of book **Introduction to the Design and Analysis of Algori
 ### [Unique Elements algorithm](Chapter2/UniqueElements.cpp)
 ### [Matrix Multiplication algorithm](Chapter2/MatrixMultiplication.cpp)
 ### [Binary algorithm](Chapter2/Binary.cpp)
+### [Factorial algorithm](Chapter2/Factorial.cpp)
 ## Chapter3 Brute Force and Exhaustive Search
 ### [Selection Sort algorithm](Chapter3/SelectionSort.cpp)
 ### [Bubble Sort algorithm](Chapter3/BubbleSort.cpp)
