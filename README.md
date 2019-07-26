@@ -14,6 +14,7 @@ This is the practice of book **Introduction to the Design and Analysis of Algori
 ### [Binary algorithm](Chapter2/Binary.cpp)
 ### [Factorial algorithm](Chapter2/Factorial.cpp)
 ### [Binary algorithm(recursive version)](Chapter2/BinaryRecursive.cpp)
+### [Linear Congruential Method](Chapter2/Random.cpp)
 ## Chapter3 Brute Force and Exhaustive Search
 ### [Selection Sort algorithm](Chapter3/SelectionSort.cpp)
 ### [Bubble Sort algorithm](Chapter3/BubbleSort.cpp)
