@@ -32,7 +32,6 @@ void random(vector<int> &result, int n, int m = pow(2, sizeof(size_t)), int a = 
 int main()
 {
     std::time_t t = std::time(0);
-    cout << sizeof(size_t) <<endl;
 
     vector<int> res;
     int size = randint(1, 100);
