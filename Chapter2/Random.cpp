@@ -13,7 +13,8 @@ using std::vector;
  * @param n number of integers to generate
  * @param m modulus see https://en.wikipedia.org/wiki/Linear_congruential_generator#Paramet
  *              ers_in_common_use for the number to be choosen in various implementation 
- *              of lcg 
+ *              of lcg (m should be as large as possible and a prime number in practice to
+ *              give a better result)
  * @param a multiplier
  * @param b increment
  * @param seed the current time

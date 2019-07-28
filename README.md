@@ -6,6 +6,8 @@ This is the practice of book **Introduction to the Design and Analysis of Algori
 
 # Content
 
+## Chapter1 Introduction
+### [Euclid’s algorithm](Chapter1/GCD.cpp)
 ## Chapter2 Fundamentals of the Analysis of Algorithm Efficiency
 ### [Sequential Search algorithm](Chapter2/SequentialSearch.cpp)
 ### [Max Element algorithm](Chapter2/MaxElement.cpp)
