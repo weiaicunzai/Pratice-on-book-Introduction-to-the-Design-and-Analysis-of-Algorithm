@@ -6,6 +6,11 @@ using std::cout;
 using std::endl;
 using std::min;
 
+/**
+ * @brief Consecutive integer checking algorithm for computing gcd(m, n)
+ * @param  two input integer m and n, both should be larget than 1
+ * @output  the greatest common divisor of m and n
+ */
 int gcd(int m, int n)
 {
     if(!m or !n)

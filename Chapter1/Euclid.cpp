@@ -4,6 +4,12 @@
 using std::endl;
 using std::cout;
 
+/**
+ * @biref Euclid’s algorithm for computing gcd(m, n)
+ * @param  m and n are two integers that are both nonnegative and
+ *          cant both be 0
+ * @output the gcd of m and n   
+ */
 int euclid(int m, int n)
 {
     if(!m && !n)
