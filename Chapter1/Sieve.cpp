@@ -47,7 +47,7 @@ int main()
     int n = randint(2, 1000);
     sieve(n, res);
 
-    cout << "prime number between 2 and " << n  << " are: " << endl;
+    cout << "prime numbers between 2 and " << n  << " are: " << endl;
     for(auto x : res)
         cout << x << endl;
 }
