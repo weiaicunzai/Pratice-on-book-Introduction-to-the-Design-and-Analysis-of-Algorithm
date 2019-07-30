@@ -31,4 +31,5 @@ This is the practice of book **Introduction to the Design and Analysis of Algori
 ### [Insertion Sort Algorithm](Chapter4/InsertionSort.cpp)
 ### [Johnson Trotter Algorithm](Chapter4/JohnsonTrotter.cpp)
 ### [Lexicographic Permute Algorithm](Chapter4/LexicographicPermute.cpp)
+### [Binary Reflected Gray Code](Chapter4/GrayCode.cpp)
 
