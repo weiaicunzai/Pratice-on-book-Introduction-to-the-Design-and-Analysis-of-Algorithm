@@ -30,4 +30,5 @@ This is the practice of book **Introduction to the Design and Analysis of Algori
 ## Chapter4 Decrease-and-Conquer
 ### [Insertion Sort Algorithm](Chapter4/InsertionSort.cpp)
 ### [Johnson Trotter Algorithm](Chapter4/JohnsonTrotter.cpp)
+### [Lexicographic Permute Algorithm](Chapter4/LexicographicPermute.cpp)
 
