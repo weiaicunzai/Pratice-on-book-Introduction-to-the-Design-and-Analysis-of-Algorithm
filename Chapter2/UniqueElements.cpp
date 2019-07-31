@@ -1,10 +1,12 @@
 #include <vector>
 #include <iostream>
+#include <algorithm>
 #include "../utils/utils.hpp"
 
 using std::endl;
 using std::cout;
 using std::vector;
+using std::for_each;
 
 
 /**
@@ -32,6 +34,5 @@ int main()
     cout << unique_element(arr) << endl;
 
     cout << endl;
-    for(auto x : arr)
-        cout << x << endl;
+    for_each(arr.begin(), arr.end(), [](int n){cout << n << endl;});
 }

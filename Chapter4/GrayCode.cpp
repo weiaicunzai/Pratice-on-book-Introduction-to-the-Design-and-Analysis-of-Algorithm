@@ -12,6 +12,7 @@ using std::vector;
 using std::string;
 using std::reverse;
 using std::make_move_iterator;
+using std::for_each;
 
 /**
  * @brief Generates recursively the binary reflected Gray code of order n
@@ -66,9 +67,7 @@ int main()
     int n = randint(1, 10);
     brgc(n, res);
 
-    for(auto x : res)
-        cout << x << endl;
-
+    for_each(res.begin(), res.end(), [](string s){cout << s << endl;});
     cout << "the gray code for number " << n << " is: " << endl;
     cout << "size: " << res.size() << endl;
 }

@@ -1,7 +1,10 @@
-# Pratice on book [Introduction to the Design and Analysis of Algorithm](https://www.amazon.com/Introduction-Design-Analysis-Algorithms-Levitin/dp/027376411X)
+# Pratice on book [Introduction to the Design and Analysis of Algorithm(3rd Edition)](https://www.amazon.com/Introduction-Design-Analysis-Algorithms-3rd/dp/0132316811/ref=sr_1_2?keywords=Introduction+to+the+Design+and+Analysis+of+Algorithms&qid=1564471585&s=books&sr=1-2)
 
+![book cover][logo]
 
-This is the practice of book **Introduction to the Design and Analysis of Algorithm** when I reading it, all the examples in the book are written in C++.
+[logo]: 61Pe23-FeLL._SX402_BO1,204,203,200_.jpg
+
+This is the practice of book **Introduction to the Design and Analysis of Algorithm(3rd Edition)** when I reading it, all the **pseudocode examples** in the book are implementated in C++ using C++11 standard.
 
 
 # Content
@@ -32,4 +35,5 @@ This is the practice of book **Introduction to the Design and Analysis of Algori
 ### [Johnson Trotter Algorithm](Chapter4/JohnsonTrotter.cpp)
 ### [Lexicographic Permute Algorithm](Chapter4/LexicographicPermute.cpp)
 ### [Binary Reflected Gray Code](Chapter4/GrayCode.cpp)
+### [Binary Search Algorithm](Chapter4/BinarySearch.cpp)
 
