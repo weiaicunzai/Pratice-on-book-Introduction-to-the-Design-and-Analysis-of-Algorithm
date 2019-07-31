@@ -36,4 +36,5 @@ This is the practice of book **Introduction to the Design and Analysis of Algori
 ### [Lexicographic Permute Algorithm](Chapter4/LexicographicPermute.cpp)
 ### [Binary Reflected Gray Code](Chapter4/GrayCode.cpp)
 ### [Binary Search Algorithm](Chapter4/BinarySearch.cpp)
+### [Lomuto Partitioning Algorithm](Chapter4/LomutoPartition.cpp)
 
