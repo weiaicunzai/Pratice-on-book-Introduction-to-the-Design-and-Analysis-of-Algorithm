@@ -37,4 +37,5 @@ This is the practice of book **Introduction to the Design and Analysis of Algori
 ### [Binary Reflected Gray Code](Chapter4/GrayCode.cpp)
 ### [Binary Search Algorithm](Chapter4/BinarySearch.cpp)
 ### [Lomuto Partitioning Algorithm](Chapter4/LomutoPartition.cpp)
+### [Quick Select Algorithm](Chapter4/QuickSelect.cpp)
 

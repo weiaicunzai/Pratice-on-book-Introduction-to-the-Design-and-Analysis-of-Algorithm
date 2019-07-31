@@ -48,6 +48,12 @@ int main()
 
     int pivot = lomuto_parition(arr);
 
+    if(pivot == -1)
+    {
+        cout << "array size should be larger than 0" << endl;
+        return;
+    }
+
     //red is pivot
     for (auto it = arr.begin(); it != arr.end(); it++)
         if (it - arr.begin() == pivot)

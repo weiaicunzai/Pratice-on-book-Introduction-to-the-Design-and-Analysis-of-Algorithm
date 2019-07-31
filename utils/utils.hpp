@@ -1,6 +1,7 @@
 #include <random>
 #include <iostream>
 #include <algorithm>
+#include <cassert>
 
 using std::random_device;
 using std::mt19937;
@@ -12,6 +13,7 @@ using std::generate_n;
 
 int randint(int min, int max) //[min, max]
 {
+    assert(max >= min && "max should not be less than min");
     random_device dev;
     mt19937 rng(dev());
     uniform_int_distribution<mt19937::result_type> dist(min, max); // distribution in range [1, 6]
@@ -21,6 +23,7 @@ int randint(int min, int max) //[min, max]
 
 double randouble(double min, double max) //[min, max]
 {
+   assert(max >= min && "max should not be less than min");
    uniform_real_distribution<double> unif(min, max);
    random_device dev;
    default_random_engine re(dev());
