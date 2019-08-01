@@ -2,13 +2,13 @@
 #include <vector>
 #include "../utils/utils.hpp"
 
-using std::endl;
 using std::cout;
+using std::endl;
 using std::for_each;
-using std::vector;
-using std::swap;
 using std::string;
+using std::swap;
 using std::to_string;
+using std::vector;
 
 /**
  * @biref parition algorithm using lomuto algorithm
@@ -19,16 +19,16 @@ using std::to_string;
  */
 int parition(vector<int> &arr, const int left, const int right)
 {
-    if(arr.empty())
+    if (arr.empty())
         return -1;
-    
+
     int pivot = arr[left];
     int s = left;
 
-    for(int i = left + 1; i <= right; i++)
-        if(pivot > arr[i])
+    for (int i = left + 1; i <= right; i++)
+        if (pivot > arr[i])
             swap(arr[++s], arr[i]);
-    
+
     swap(arr[s], arr[left]);
 
     return s;
@@ -43,21 +43,21 @@ int parition(vector<int> &arr, const int left, const int right)
  */
 int quick_select(vector<int> &arr, const int left, const int right, const int K)
 {
-    
-    if(!(K >= 1))
+
+    if (!(K >= 1))
         throw std::invalid_argument("K should be larger than 0, while K: " + to_string(K));
-    if(!(left >= 0 && right >= left && arr.size() - 1 >= right))
+    if (!(left >= 0 && right >= left && arr.size() - 1 >= right))
         throw std::invalid_argument("0 <= left <= right <= arr.size() - 1");
-    if(arr.empty())
+    if (arr.empty())
         throw std::invalid_argument("array should not be empty");
-    
+
     int s = parition(arr, left, right);
-    if(s == -1)
+    if (s == -1)
         throw std::invalid_argument("array is empty!");
 
-    if(s + 1 == K)
+    if (s + 1 == K)
         return arr[s];
-    else if(s + 1 < K)
+    else if (s + 1 < K)
         return quick_select(arr, s + 1, right, K);
     else
         return quick_select(arr, left, s - 1, K);
@@ -68,18 +68,17 @@ int main()
     int n = randint(1, 15);
     int Kth = randint(1, n);
     vector<int> arr;
-    while(n--)
+    while (n--)
         arr.push_back(randint(-10, 10));
-    
+
     //average time complexity O(n)
     //worest time complexity O(n^2)
     //best time complexity O(n)
     int value = quick_select(arr, 0, arr.size() - 1, Kth);
 
     cout << "for array : ";
-    for_each(arr.begin(), arr.end(), [](int x){cout << x << " ";});
+    for_each(arr.begin(), arr.end(), [](int x) { cout << x << " "; });
     cout << endl;
 
     cout << "the " << Kth << " smallest number is " << value << endl;
-
 }

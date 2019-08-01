@@ -38,4 +38,6 @@ This is the practice of book **Introduction to the Design and Analysis of Algori
 ### [Binary Search Algorithm](Chapter4/BinarySearch.cpp)
 ### [Lomuto Partitioning Algorithm](Chapter4/LomutoPartition.cpp)
 ### [Quick Select Algorithm](Chapter4/QuickSelect.cpp)
+## Chapter5 Divide-and-Conquer
+### [Merge Sort Algorithm](Chapter5/MergeSort.cpp)
 
