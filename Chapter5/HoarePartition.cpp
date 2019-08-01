@@ -31,7 +31,7 @@ int hoare_partition(vector<int> &arr, const int left, const int right)
     int i = left + 1;
     int j = right;
 
-    while (i < j)
+    while (i <= j)
     {
         while (arr[j] > pivot)
             j--;
@@ -42,7 +42,7 @@ int hoare_partition(vector<int> &arr, const int left, const int right)
 
     //the last swap in the while loop was under
     //condition(i >=j) which is illegal, we need
-    //to switch back
+    //to switch back first
     swap(arr[i], arr[j]);
     swap(arr[j], arr[left]);
     return j;
@@ -51,9 +51,10 @@ int hoare_partition(vector<int> &arr, const int left, const int right)
 int main()
 {
     int size = randint(1, 20);
-    vector<int> arr;
-    while (size--)
-        arr.push_back(randint(-100, 100));
+    //vector<int> arr = {-11, -1, 10, 13, -7 ,1, 18 };
+    vector<int> arr = {-20, -14};
+    //while (size--)
+    //    arr.push_back(randint(-100, 100));
 
     int p = hoare_partition(arr, 0, arr.size() - 1);
 

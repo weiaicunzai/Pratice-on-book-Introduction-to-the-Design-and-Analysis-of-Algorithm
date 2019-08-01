@@ -5,7 +5,6 @@
 using std::copy;
 using std::cout;
 using std::endl;
-using std::move;
 using std::sort;
 using std::vector;
 
