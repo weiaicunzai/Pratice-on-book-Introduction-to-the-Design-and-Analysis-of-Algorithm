@@ -40,4 +40,6 @@ This is the practice of book **Introduction to the Design and Analysis of Algori
 ### [Quick Select Algorithm](Chapter4/QuickSelect.cpp)
 ## Chapter5 Divide-and-Conquer
 ### [Merge Sort Algorithm](Chapter5/MergeSort.cpp)
+### [Hoare Partition Algorithm](Chapter5/HoarePartition.cpp)
+### [Quick Sort Algorithm](Chapter5/QuickSort.cpp)
 
