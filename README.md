@@ -4,7 +4,7 @@
 
 [logo]: 61Pe23-FeLL._SX402_BO1,204,203,200_.jpg
 
-This is the practice of book **Introduction to the Design and Analysis of Algorithm(3rd Edition)** when I reading it, all the **pseudocode examples** in the book are implementated in C++ using C++11 standard.
+This is the practice of book **Introduction to the Design and Analysis of Algorithm(3rd Edition)** when I reading it, all the **pseudocode examples** in the book are implementated in C++ with C++11 standard.
 
 
 # Content

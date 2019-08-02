@@ -4,6 +4,8 @@
 
 using std::cout;
 using std::endl;
+using std::max;
+using std::min;
 using std::sort;
 using std::swap;
 using std::vector;
@@ -18,31 +20,23 @@ using std::vector;
  */
 int hoare_partition(vector<int> &arr, const int left, const int right)
 {
-    if (left > right)
-        return -1;
 
-    if (left == right)
-        return left;
+    int mid = (left + right) / 2;
+    int median = max(min(arr[left], arr[right]), min(max(arr[left], arr[right]), arr[mid]));
 
-    int pivot = arr[left];
-    int i = left + 1;
-    int j = right;
-
-    while (i <= j)
+    int l = left;
+    int r = right;
+    while (l <= r)
     {
-        while (arr[j] > pivot)
-            j--;
-        while (arr[i] < pivot)
-            i++;
-        swap(arr[i], arr[j]);
-    }
+        while (arr[l] < median && l <= r)
+            l++;
+        while (arr[r] > median)
+            r--;
 
-    //the last swap in the while loop was under
-    //condition(i >=j) which is illegal, we need
-    //to switch back
-    swap(arr[i], arr[j]);
-    swap(arr[j], arr[left]);
-    return j;
+        if (l <= r)
+            swap(arr[l++], arr[r--]);
+    }
+    return l;
 }
 
 /**
@@ -53,13 +47,13 @@ int hoare_partition(vector<int> &arr, const int left, const int right)
  */
 void quick_sort(vector<int> &arr, const int left, const int right)
 {
-    if(left >= right)
+    if (left >= right)
         return;
 
     int p = hoare_partition(arr, left, right);
 
     quick_sort(arr, left, p - 1);
-    quick_sort(arr, p + 1, right);
+    quick_sort(arr, p, right);
 }
 
 int main()
@@ -67,24 +61,12 @@ int main()
     int size = randint(1, 20);
     vector<int> arr;
     vector<int> arr1;
-    while(size--)
+    while (size--)
         arr.push_back(randint(-20, 20));
-    //arr = {1, -5, 20, -9, -8, -20, -2, -14, 10, 13, -13 ,-7 };
     arr1 = arr;
 
-    for(auto x : arr)
-    cout << x << " ";
-    cout << endl;
-
     quick_sort(arr, 0, arr.size() - 1);
-    for(auto x : arr)
-    cout << x << " ";
-    cout << endl;
     sort(arr1.begin(), arr1.end());
-    for(auto x : arr1)
-    cout << x << " ";
-    cout << endl;
-
 
     if (arr1 == arr)
         cout << "correct result" << endl;

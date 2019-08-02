@@ -4,6 +4,8 @@
 
 using std::cout;
 using std::endl;
+using std::max;
+using std::min;
 using std::string;
 using std::swap;
 using std::vector;
@@ -22,45 +24,40 @@ const std::string reset("\033[0m");
 int hoare_partition(vector<int> &arr, const int left, const int right)
 {
     if (left > right)
-        return -1;
+        throw "left should be larger than right";
 
-    if (left == right)
-        return left;
+    int mid = (left + right) / 2;
+    int median = max(min(arr[left], arr[right]), min(max(arr[left], arr[right]), arr[mid]));
 
-    int pivot = arr[left];
-    int i = left + 1;
-    int j = right;
-
-    while (i <= j)
+    int l = left;
+    int r = right;
+    while (l <= r)
     {
-        while (arr[j] > pivot)
-            j--;
-        while (arr[i] < pivot)
-            i++;
-        swap(arr[i], arr[j]);
+        while (arr[l] < median && l <= r)
+            l++;
+        while (arr[r] > median)
+            r--;
+
+        if (l <= r)
+            swap(arr[l++], arr[r--]);
     }
 
-    //the last swap in the while loop was under
-    //condition(i >=j) which is illegal, we need
-    //to switch back first
-    swap(arr[i], arr[j]);
-    swap(arr[j], arr[left]);
-    return j;
+    return l;
 }
 
 int main()
 {
     int size = randint(1, 20);
-    //vector<int> arr = {-11, -1, 10, 13, -7 ,1, 18 };
-    vector<int> arr = {-20, -14};
-    //while (size--)
-    //    arr.push_back(randint(-100, 100));
+    vector<int> arr;
+    while (size--)
+        arr.push_back(randint(-10, 10));
 
     int p = hoare_partition(arr, 0, arr.size() - 1);
 
+    //right part is always larger than the left part
     for (int i = 0; i < arr.size(); i++)
-        if (i == p)
-            cout << red << arr[i] << " " << reset;
+        if (i >= p)
+            cout << red << arr[i] << " ";
         else
             cout << arr[i] << " ";
     cout << endl;
