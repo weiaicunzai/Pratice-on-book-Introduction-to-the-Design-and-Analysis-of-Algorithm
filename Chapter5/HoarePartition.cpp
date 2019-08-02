@@ -1,3 +1,17 @@
+/**
+ * (1)Hoare’s scheme is more efficient than Lomuto’s partition scheme 
+ * because it does three times fewer swaps on average, and it creates 
+ * efficient partitions even when all values are equal.
+ * 
+ * (2)Like Lomuto’s partition scheme, Hoare partitioning also causes 
+ * Quicksort to degrade to O(n^2) when the input array is already sorted, 
+ * it also doesn’t produce a stable sort.
+ * 
+ * (3)Note that in this scheme, the pivot’s final location is not necessarily 
+ * at the index that was returned, and the next two segments that the main 
+ * algorithm recurs on are (lo..p) and (p+1..hi) as opposed to (lo..p-1) and 
+ * (p+1..hi) as in Lomuto’s scheme.
+ */
 #include <iostream>
 #include <vector>
 #include "../utils/utils.hpp"
@@ -11,7 +25,7 @@ using std::swap;
 using std::vector;
 
 const string red("\033[0;4;31m");
-const std::string reset("\033[0m");
+const string reset("\033[0m");
 
 /**
  * @breif partitions a subarray by Hoare’s algorithm, using the first element

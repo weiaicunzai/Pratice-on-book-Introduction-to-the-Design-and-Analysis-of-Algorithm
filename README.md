@@ -42,4 +42,5 @@ This is the practice of book **Introduction to the Design and Analysis of Algori
 ### [Merge Sort Algorithm](Chapter5/MergeSort.cpp)
 ### [Hoare Partition Algorithm](Chapter5/HoarePartition.cpp)
 ### [Quick Sort Algorithm](Chapter5/QuickSort.cpp)
+### [Binary Tree Height](Chapter5/Height.cpp)
 

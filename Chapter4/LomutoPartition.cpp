@@ -11,7 +11,7 @@ using std::swap;
 using std::vector;
 
 const string red("\033[0;4;31m");
-const std::string reset("\033[0m");
+const string reset("\033[0m");
 
 /**
  * Partitions subarray by Lomuto’s algorithm using first element as pivot

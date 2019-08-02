@@ -3,13 +3,12 @@
 #include <algorithm>
 #include <cassert>
 
-using std::random_device;
-using std::mt19937;
-using std::vector;
-using std::uniform_int_distribution;
-using std::uniform_real_distribution;
 using std::default_random_engine;
 using std::generate_n;
+using std::mt19937;
+using std::random_device;
+using std::uniform_int_distribution;
+using std::uniform_real_distribution;
 
 int randint(int min, int max) //[min, max]
 {
@@ -23,27 +22,25 @@ int randint(int min, int max) //[min, max]
 
 double randouble(double min, double max) //[min, max]
 {
-   assert(max >= min && "max should not be less than min");
-   uniform_real_distribution<double> unif(min, max);
-   random_device dev;
-   default_random_engine re(dev());
+    assert(max >= min && "max should not be less than min");
+    uniform_real_distribution<double> unif(min, max);
+    random_device dev;
+    default_random_engine re(dev());
 
-   return unif(re);
+    return unif(re);
 }
 
-std::string randstring(size_t length )
+std::string randstring(size_t length)
 {
-    auto randchar = []() -> char
-    {
+    auto randchar = []() -> char {
         const char charset[] =
-        "0123456789"
-        "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-        "abcdefghijklmnopqrstuvwxyz";
+            "0123456789"
+            "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+            "abcdefghijklmnopqrstuvwxyz";
         const size_t max_index = (sizeof(charset) - 1);
-        return charset[ rand() % max_index ];
+        return charset[rand() % max_index];
     };
-    std::string str(length,0);
-    std::generate_n( str.begin(), length, randchar );
+    std::string str(length, 0);
+    std::generate_n(str.begin(), length, randchar);
     return str;
 }
-

@@ -1,3 +1,20 @@
+/**
+ * (1)better pivot selection methods such as randomized quicksort that uses a
+ * random element or the median-of-three method that uses the median of the
+ * leftmost, rightmost, and the middle element of the array 
+ * (2)switching to insertion sort on very small subarrays (between 5 and 15 
+ * elements for most computer systems) or not sorting small subarrays at all 
+ * and finishing the algorithm with insertion sort applied to the entire nearly 
+ * sorted array 
+ * (3)modifications of the partitioning algorithm such as the three-way 
+ * partition into segments smaller than, equal to, and larger than the 
+ * pivot (see Problem 9 in this section’s exercises)
+ * 
+ * 
+ * According to Robert Sedgewick, the world’s leading expert on quicksort, 
+ * such improvements in combination can cut the running time of the algorithm 
+ * by 20%–30%.
+ */
 #include <iostream>
 #include <vector>
 #include "../utils/utils.hpp"
