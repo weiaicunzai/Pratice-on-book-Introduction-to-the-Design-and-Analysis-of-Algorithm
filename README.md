@@ -43,4 +43,5 @@ This is the practice of book **Introduction to the Design and Analysis of Algori
 ### [Hoare Partition Algorithm](Chapter5/HoarePartition.cpp)
 ### [Quick Sort Algorithm](Chapter5/QuickSort.cpp)
 ### [Binary Tree Height](Chapter5/Height.cpp)
+### [Karatsuba Algorithm](Chapter5/LargeInteger.cpp)
 
