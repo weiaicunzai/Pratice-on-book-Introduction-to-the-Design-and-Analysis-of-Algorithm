@@ -44,4 +44,5 @@ This is the practice of book **Introduction to the Design and Analysis of Algori
 ### [Quick Sort Algorithm](Chapter5/QuickSort.cpp)
 ### [Binary Tree Height](Chapter5/Height.cpp)
 ### [Karatsuba Algorithm](Chapter5/LargeInteger.cpp)
+### [Strassen’s Algorithm](Chapter5/MatrixMultiplication.cpp)
 

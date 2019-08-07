@@ -3,7 +3,6 @@
 
 using std::cout;
 using std::endl;
-using std::stod;
 using std::stold;
 using std::string;
 using std::to_string;
@@ -154,8 +153,11 @@ string karatsuba(string first, string second)
 
 int main()
 {
-    const int first_size = randint(1, 20);
-    const int second_size = randint(1, 20);
+    //for simplicity reason, only use
+    //positive integers with less than 20 
+    //digits as test cases
+    const int first_size = randint(1, 200);
+    const int second_size = randint(1, 200);
 
     string first, second;
     for (int i = 0; i < first_size; i++)
@@ -175,9 +177,16 @@ int main()
     //use 1 as threshold to prevent accuracy lose
     //not a great idea to test the result using
     //long double, may cause accuracy loss when the
-    //number is too large, 
+    //number is too large, but it's easy to implement
+    //you could print out these 3 variables and
+    //use python to check if the wrong result was
+    //caused by the accuracy lose or just somthing
+    //wrong in my code. I've tested using python,
+    //my result was correct.
     if (stold(res) - stold(first) * stold(second) < 1)
         cout << "correct result" << endl;
     else
         cout << "wrong result" << endl;
+
 }
+
