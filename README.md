@@ -45,4 +45,5 @@ This is the practice of book **Introduction to the Design and Analysis of Algori
 ### [Binary Tree Height](Chapter5/Height.cpp)
 ### [Karatsuba Algorithm](Chapter5/LargeInteger.cpp)
 ### [Strassen’s Algorithm](Chapter5/MatrixMultiplication.cpp)
+### [Effient Closest Pair Algorithm](Chapter5/EffientClosestPair.cpp)
 

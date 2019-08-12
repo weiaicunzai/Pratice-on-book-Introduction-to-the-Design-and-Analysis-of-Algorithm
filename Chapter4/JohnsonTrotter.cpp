@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include "../utils/utils.hpp"
 
 
 using std::cout;
@@ -108,7 +109,7 @@ int factorial(int n)
 
 /**
  * @brief Implements Johnson-Trotter algorithm for generating permutations
- * @param n A positive integer n
+ * @param n A positive integer n, generating {1, . . . , n} permutations
  * @param data output A list of all permutations of {1, . . . , n}
  */
 void johnson_trotter(int n, vector<vector<int>> &permutations)
@@ -154,7 +155,9 @@ void johnson_trotter(int n, vector<vector<int>> &permutations)
 int main()
 {
     vector<vector<int>> res;
-    johnson_trotter(6, res);
+    int n = randint(1, 10);
+
+    johnson_trotter(n, res);
 
     //print result
     cout << res.size() << endl;
