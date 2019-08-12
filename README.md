@@ -46,4 +46,5 @@ This is the practice of book **Introduction to the Design and Analysis of Algori
 ### [Karatsuba Algorithm](Chapter5/LargeInteger.cpp)
 ### [Strassen’s Algorithm](Chapter5/MatrixMultiplication.cpp)
 ### [Effient Closest Pair Algorithm](Chapter5/EffientClosestPair.cpp)
-
+## Chapter6 Transform-and-Conquer
+### [Gaussian Elimination](Chapter6/ForwardElimination.cpp)
