@@ -1,8 +1,11 @@
 #include <iostream>
 #include <memory>
+#include <set>
+#include "../utils/utils.hpp"
 
 class node;
 using std::cout;
+using std::set;
 using std::endl;
 using std::make_shared;
 using std::max;
@@ -76,20 +79,22 @@ class AVL
     node_ptr rl_rotation(node_ptr node);
     node_ptr lr_rotation(node_ptr node);
     node_ptr l_rotation(node_ptr node);
+    node_ptr r_rotation(node_ptr node);
     void update_balance(node_ptr node);
     void insert_core(node_ptr node);
     int height(node_ptr);
     node_ptr root;
     node_ptr new_node;
+    node_ptr sub_root;
+    bool update_child;
     void inorder(node_ptr root);
 
 public:
-    node_ptr r_rotation(node_ptr node);
     node_ptr get_root();
     void insert_node(node_ptr node);
     void delete_node(node_ptr node);
     void inorder_print();
-    AVL(node_ptr n) : root(n){};
+    AVL(node_ptr n) : root(n), update_child(false){};
 };
 
 /**
@@ -104,6 +109,10 @@ node_ptr AVL::r_rotation(node_ptr node)
     left_child->set_right_child(node);
     node->set_left_child(T2);
 
+    //update root
+    if(node == root)
+        root = left_child;
+
     update_balance(left_child);
     update_balance(node);
 
@@ -111,7 +120,9 @@ node_ptr AVL::r_rotation(node_ptr node)
 }
 
 /**
- * @brief 
+ * @brief perform left rotation on given node
+ * @param node the node which perform left rotation on
+ * @param output return new root of the subtree
  */
 node_ptr AVL::l_rotation(node_ptr node)
 {
@@ -120,12 +131,22 @@ node_ptr AVL::l_rotation(node_ptr node)
     right_child->set_left_child(node);
     node->set_right_child(T2);
 
+    //update root
+    if(node == root)
+        root = right_child;
+
     update_balance(node);
     update_balance(right_child);
 
     return right_child;
 }
 
+/**
+ * @brief perform left rotation on given node's left child, then
+ *        right rotation on given node
+ * @param given node
+ * @output new root of rotated subtree
+ */
 node_ptr AVL::lr_rotation(node_ptr node)
 {
     node_ptr r = node;
@@ -137,6 +158,12 @@ node_ptr AVL::lr_rotation(node_ptr node)
     return res;
 }
 
+/**
+ * @brief perform right rotation on given node's right child, then
+ *        left rotation on given node
+ * @param given node
+ * @output new root of rotated subtree
+ */
 node_ptr AVL::rl_rotation(node_ptr node)
 {
     node_ptr r = node;
@@ -173,25 +200,47 @@ void AVL::insert_core(node_ptr node)
     else
         throw "equal keys not allowed";
 
+    //set new child to the new rotated subroot
+    if(update_child)
+    {
+        if(key > node->get_val())
+            node->set_right_child(sub_root);
+        if(key < node->get_val())
+            node->set_left_child(sub_root);
+        update_child == false;
+    }
+
     //update balance factor for current node
     update_balance(node);
     int bf = node->get_balance_factor();
 
     //left left case
     if (bf > 1 && key < node->get_left_child()->get_val())
-        node = r_rotation(node);
+    {
+        update_child = true;
+        sub_root = r_rotation(node);
+    }
 
     //right right case
-    if (bf < -1 && key > node->get_right_child()->get_val())
-        node = l_rotation(node);
+    else if (bf < -1 && key > node->get_right_child()->get_val())
+    {
+        update_child = true;
+        sub_root = l_rotation(node);
+    }
 
     //left right case
-    if (bf > 1 && key > node->get_left_child()->get_val())
-        node = lr_rotation(node);
+    else if (bf > 1 && key > node->get_left_child()->get_val())
+    {
+        update_child = true;
+        sub_root = lr_rotation(node);
+    }    
 
     //right left case
-    if (bf < -1 && key < node->get_right_child()->get_val())
-        node = rl_rotation(node);
+    else if (bf < -1 && key < node->get_right_child()->get_val())
+    {
+        update_child = true;
+        sub_root = rl_rotation(node);
+    }
 }
 
 void AVL::insert_node(node_ptr node)
@@ -200,6 +249,7 @@ void AVL::insert_node(node_ptr node)
         return;
 
     new_node = node;
+    update_child = false;
     insert_core(root);
 }
 
@@ -235,7 +285,19 @@ void AVL::inorder(node_ptr node)
         inorder(node->get_left_child());
 
     cout << "val: " << node->get_val() 
-         << " bf: " << node->get_balance_factor() << endl;
+         << " bf: " << node->get_balance_factor() << endl;;
+    
+    if(node->get_left_child())
+        cout << "left: " << node->get_left_child()->get_val() << endl;
+    else
+        cout << "left: empty" << endl;
+
+    if(node->get_right_child())
+        cout << "right: " << node->get_right_child()->get_val() << endl;
+    else
+        cout << "right: empty" << endl;
+    
+    cout << endl;
 
     if (node->get_right_child())
         inorder(node->get_right_child());
@@ -248,18 +310,16 @@ void AVL::inorder_print()
 
 int main()
 {
-    node_ptr root = make_shared<node>(10);
-    AVL a(root);
+    int size = randint(1, 30);
 
-    a.insert_node(make_shared<node>(11));
-    a.insert_node(make_shared<node>(12));
-    a.inorder_print();
+    set<int> data;
+    while(data.size() != size)
+        data.insert(randint(-100, 100));
 
-    node_ptr c = make_shared<node>(111);
-    c->set_left_child(make_shared<node>(222));
-    c->get_left_child()->set_left_child(make_shared<node>(333));
+    //init root
+    AVL test(make_shared<node>(100000));
+    for(auto it = data.begin(); it != data.end(); it++)
+        test.insert_node(make_shared<node>(*it));
 
-    a.r_rotation(c);
-
-
+    test.inorder_print();
 }
