@@ -5,10 +5,10 @@
 
 class node;
 using std::cout;
-using std::set;
 using std::endl;
 using std::make_shared;
 using std::max;
+using std::set;
 using std::shared_ptr;
 using node_ptr = shared_ptr<node>;
 
@@ -92,7 +92,6 @@ class AVL
 public:
     node_ptr get_root();
     void insert_node(node_ptr node);
-    void delete_node(node_ptr node);
     void inorder_print();
     AVL(node_ptr n) : root(n), update_child(false){};
 };
@@ -110,7 +109,7 @@ node_ptr AVL::r_rotation(node_ptr node)
     node->set_left_child(T2);
 
     //update root
-    if(node == root)
+    if (node == root)
         root = left_child;
 
     update_balance(left_child);
@@ -132,7 +131,7 @@ node_ptr AVL::l_rotation(node_ptr node)
     node->set_right_child(T2);
 
     //update root
-    if(node == root)
+    if (node == root)
         root = right_child;
 
     update_balance(node);
@@ -201,11 +200,11 @@ void AVL::insert_core(node_ptr node)
         throw "equal keys not allowed";
 
     //set new child to the new rotated subroot
-    if(update_child)
+    if (update_child)
     {
-        if(key > node->get_val())
+        if (key > node->get_val())
             node->set_right_child(sub_root);
-        if(key < node->get_val())
+        if (key < node->get_val())
             node->set_left_child(sub_root);
         update_child == false;
     }
@@ -233,7 +232,7 @@ void AVL::insert_core(node_ptr node)
     {
         update_child = true;
         sub_root = lr_rotation(node);
-    }    
+    }
 
     //right left case
     else if (bf < -1 && key < node->get_right_child()->get_val())
@@ -284,19 +283,20 @@ void AVL::inorder(node_ptr node)
     if (node->get_left_child())
         inorder(node->get_left_child());
 
-    cout << "val: " << node->get_val() 
-         << " bf: " << node->get_balance_factor() << endl;;
-    
-    if(node->get_left_child())
+    cout << "val: " << node->get_val()
+         << " bf: " << node->get_balance_factor() << endl;
+    ;
+
+    if (node->get_left_child())
         cout << "left: " << node->get_left_child()->get_val() << endl;
     else
         cout << "left: empty" << endl;
 
-    if(node->get_right_child())
+    if (node->get_right_child())
         cout << "right: " << node->get_right_child()->get_val() << endl;
     else
         cout << "right: empty" << endl;
-    
+
     cout << endl;
 
     if (node->get_right_child())
@@ -312,14 +312,18 @@ int main()
 {
     int size = randint(1, 30);
 
+    //no duplicates numbers are allowed
     set<int> data;
-    while(data.size() != size)
+    while (data.size() != size)
         data.insert(randint(-100, 100));
 
     //init root
+    //only test for insert implementation
     AVL test(make_shared<node>(100000));
-    for(auto it = data.begin(); it != data.end(); it++)
+    for (auto it = data.begin(); it != data.end(); it++)
         test.insert_node(make_shared<node>(*it));
 
     test.inorder_print();
+
+    data.clear();
 }
