@@ -20,10 +20,10 @@ class node
     node_ptr right_child;
     node_ptr middle_child;
     node_ptr parent;
-    void split();
-    void promote();
+    node_ptr split();
+    node_ptr promote_to();
 public:
-    node(int val);
+    node(int val):data(1, val){};
     node_ptr get_left_child();
     void set_left_child(node_ptr node);
 
@@ -42,14 +42,24 @@ public:
     int get_mid_data();
     int get_right_data();
 
-    bool is_leaf();
     bool is_overflow();
+    bool is_leaf();
     void insert(int data);
 };
 
-node::node(int val)
+bool node::is_overflow()
 {
-    data.push_back(val);
+    return size() > 2;
+}
+
+node_ptr node::split()
+{
+    assert(is_overflow());
+
+    int mid = get_mid_data();
+    node_ptr subroot = make_shared<node>(mid);
+
+    
 }
 
 //getter and setter
@@ -117,11 +127,6 @@ size_t node::size()
     return data.size();
 }
 
-bool node::is_overflow()
-{
-    return data.size() > 2;
-}
-
 bool node::is_leaf()
 {
     return !(left_child || right_child || middle_child);
@@ -154,14 +159,15 @@ void tree::insert(int data)
 
 }
 
-void tree::insert_core(node_ptr node, int key)
-{
-    if(node->is_leaf())
-}
+//void tree::insert_core(node_ptr node, int key)
+//{
+//    if(node->is_leaf())
+//}
 
 int main()
 {
-    node n;
+    vector<int> v(1, 33);
+    cout << v.size() << endl;
 }
 
 
