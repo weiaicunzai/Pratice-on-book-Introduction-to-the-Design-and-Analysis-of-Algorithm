@@ -20,8 +20,6 @@ class node
     node_ptr right_child;
     node_ptr middle_child;
     node_ptr parent;
-    node_ptr split();
-    node_ptr promote_to();
 public:
     node(int val):data(1, val){};
     node_ptr get_left_child();
@@ -38,29 +36,21 @@ public:
 
     size_t size();
 
-    int get_left_data();
-    int get_mid_data();
-    int get_right_data();
+    int get_min_data();
+    int get_max_data();
 
-    bool is_overflow();
     bool is_leaf();
     void insert(int data);
 };
 
-bool node::is_overflow()
-{
-    return size() > 2;
-}
 
-node_ptr node::split()
-{
-    assert(is_overflow());
+/**
+ * @brief split an overflow node into a new subtree whose
+ *       parent points to the same parent before split
+ *       and return this tree
+ * @return a new subtree root
+ */
 
-    int mid = get_mid_data();
-    node_ptr subroot = make_shared<node>(mid);
-
-    
-}
 
 //getter and setter
 node_ptr node::get_left_child()
@@ -103,23 +93,19 @@ void node::set_parent(node_ptr node)
     parent = node;
 }
 
-int node::get_left_data()
+int node::get_min_data()
 {
-    assert(data.size() < 4);
+    assert(data.size() < 2);
     return data.front();
 }
 
-int node::get_right_data()
+int node::get_max_data()
 {
     assert(data.size() > 1 && data.size() < 4);
     return data.back();
 }
 
-int node::get_mid_data()
-{
-    assert(data.size() == 3);
-    return data[1];
-}
+
 
 //return node's elements number
 size_t node::size()
@@ -145,10 +131,27 @@ class tree
 {
     node_ptr root;
     void insert_core(node_ptr node, int key);
+    node_ptr split(node_ptr new_node, node_ptr old_node);
+    node_ptr promote(node_ptr child);
 public:
     void insert(int data);
 };
 
+void tree::insert_core(node_ptr node, int key)
+{
+    if(!node)
+        return;
+
+    if(node->is_leaf())
+    {
+        if(node->size() == 1)
+            node->insert(key);
+        if(node->size() == 2)
+
+    }
+    if(node->get_min_data() > key)
+        insert_core
+}
 void tree::insert(int data)
 {
     if(!root)
@@ -156,6 +159,10 @@ void tree::insert(int data)
         root = make_shared<node>(data);
         return;
     }
+
+    node_ptr cur = root;
+    if(root->size() == 1)
+
 
 }
 
