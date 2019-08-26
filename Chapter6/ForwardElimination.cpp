@@ -30,7 +30,10 @@ void forward_elimination(matrix_ptr A, column_ptr b)
     for (int i = 0; i < A->size(); i++)
         A->at(i).push_back(b->at(i));
 
-    for(int i = 0; i)
+    for(int row = 0; row < A->size() - 1; row++)
+    {
+        for(int r = row + 1; r < A->size(); r++)
+    }
 
 }
 int main()
