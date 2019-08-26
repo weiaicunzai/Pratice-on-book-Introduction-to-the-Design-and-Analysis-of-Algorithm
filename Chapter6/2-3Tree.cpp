@@ -17,35 +17,37 @@ enum color {RED, BLACK};
 
 class node
 {
-    vector<int>  data;
+    int  data;
     node_ptr left_child;
     node_ptr right_child;
     color c;
+    size_t size;
 public:
-    node(int val):data(1, val){};
+    node(int val):data(val), c(RED), size(1){};
     node_ptr get_left_child();
     void set_left_child(node_ptr node);
 
     node_ptr get_right_child();
     void set_right_child(node_ptr node);
 
-    size_t size();
+    color get_color();
+    void set_color(color c);
+    int get_data();
 
-    int get_min_data();
-    int get_max_data();
+    size_t get_size();
 
     bool is_leaf();
-    void insert(int data);
 };
 
+void node::set_color(color c)
+{
+    this->c = c;
+}
 
-/**
- * @brief split an overflow node into a new subtree whose
- *       parent points to the same parent before split
- *       and return this tree
- * @return a new subtree root
- */
-
+color node::get_color()
+{
+    return c;
+}
 
 //getter and setter
 node_ptr node::get_left_child()
@@ -68,24 +70,10 @@ void node::set_left_child(node_ptr node)
     left_child = node;
 }
 
-int node::get_min_data()
+//return node's all subtree elements number
+size_t node::get_size()
 {
-    assert(data.size() < 2);
-    return data.front();
-}
-
-int node::get_max_data()
-{
-    assert(data.size() > 1 && data.size() < 4);
-    return data.back();
-}
-
-
-
-//return node's elements number
-size_t node::size()
-{
-    return data.size();
+    return size;
 }
 
 bool node::is_leaf()
@@ -93,40 +81,49 @@ bool node::is_leaf()
     return !(left_child || right_child);
 }
 
-void node::insert(int data)
+int node::get_data()
 {
-    //can not insert when data size is larger than 3
-    assert(this->data.size() > 3);
-    this->data.push_back(data);
-    sort(this->data.begin(), this->data.end());
+    return data;
 }
 
+
 //2-3 tree
+//use red black tree to implement the 2 3 tree
 class tree
 {
     node_ptr root;
     void insert_core(node_ptr node, int key);
-    node_ptr split(node_ptr new_node, node_ptr old_node);
-    node_ptr promote(node_ptr child);
+    bool is_red(node_ptr node);
+    node_ptr l_rotate(node_ptr node);
+    node_ptr r_rotate(node_ptr node);
+    node_ptr insert(node_ptr node, int data);
 public:
     void insert(int data);
 };
 
-void tree::insert_core(node_ptr node, int key)
+bool tree::is_red(node_ptr node)
 {
     if(!node)
-        return;
-
-    if(node->is_leaf())
-    {
-        if(node->size() == 1)
-            node->insert(key);
-        if(node->size() == 2)
-
-    }
-    if(node->get_min_data() > key)
-        insert_core
+        return false;
+    return node->get_color() == RED;
 }
+
+node_ptr tree::insert(node_ptr h, int key)
+{
+    if(!h)
+        return make_shared<node>(key);
+    
+    if(h->get_data() > key)
+        h->set_left_child(insert(h->get_left_child(), key));
+    if(h->get_data() < key)
+        h->set_right_child(insert(h->get_right_child(), key));
+    //do nothing when key == data
+
+    if(!is_red(h->get_left_child) && is_red(h->get_right_child()))
+        h = l_rotate(h);
+    return h;
+}
+
 void tree::insert(int data)
 {
     if(!root)
@@ -135,21 +132,16 @@ void tree::insert(int data)
         return;
     }
 
-    node_ptr cur = root;
-    if(root->size() == 1)
-
+    root = insert(root, data);
+    root->set_color(BLACK);
 
 }
-
-//void tree::insert_core(node_ptr node, int key)
-//{
-//    if(node->is_leaf())
-//}
 
 int main()
 {
     vector<int> v(1, 33);
     cout << v.size() << endl;
+    node_ptr a = make_shared<node>(10);
 }
 
 
