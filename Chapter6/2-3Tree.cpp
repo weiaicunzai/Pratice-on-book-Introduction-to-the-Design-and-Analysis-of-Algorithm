@@ -13,13 +13,14 @@ using std::endl;
 using std::sort;
 using node_ptr = shared_ptr<node>;
 
+enum color {RED, BLACK};
+
 class node
 {
     vector<int>  data;
     node_ptr left_child;
     node_ptr right_child;
-    node_ptr middle_child;
-    node_ptr parent;
+    color c;
 public:
     node(int val):data(1, val){};
     node_ptr get_left_child();
@@ -27,12 +28,6 @@ public:
 
     node_ptr get_right_child();
     void set_right_child(node_ptr node);
-
-    node_ptr get_mid_child();
-    void set_mid_child(node_ptr node);
-
-    node_ptr get_parent();
-    void set_parent(node_ptr node);
 
     size_t size();
 
@@ -63,16 +58,6 @@ node_ptr node::get_right_child()
     return right_child;
 }
 
-node_ptr node::get_mid_child()
-{
-    return middle_child;
-}
-
-void node::set_mid_child(node_ptr node)
-{
-    middle_child = node;
-}
-
 void node::set_right_child(node_ptr node)
 {
     right_child = node;
@@ -81,16 +66,6 @@ void node::set_right_child(node_ptr node)
 void node::set_left_child(node_ptr node)
 {
     left_child = node;
-}
-
-node_ptr node::get_parent()
-{
-    return parent;
-}
-
-void node::set_parent(node_ptr node)
-{
-    parent = node;
 }
 
 int node::get_min_data()
@@ -115,7 +90,7 @@ size_t node::size()
 
 bool node::is_leaf()
 {
-    return !(left_child || right_child || middle_child);
+    return !(left_child || right_child);
 }
 
 void node::insert(int data)
